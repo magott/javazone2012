@@ -4,9 +4,9 @@ import unfiltered.response.{Html5, Ok}
 
 class JavaZonePlan extends Plan {
   def intent = {
+    case GET(Path(Seg(Nil))) => Ok ~> Html5(<h1>Hello</h1> <h2>Is it me you're looking for?</h2>)
     case GET(Path(Seg("javazone" :: Nil))) => Ok ~> Html5(<h1>Hei sveis</h1>)
     case GET(Path(Seg("javazone" :: "speakers" :: "arktekk" :: Nil))) => Ok ~> Html5(speakersTable)
-    case GET(Path(Seg(Nil))) => Ok ~> Html5(<h1>Hello</h1> <h2>Is it me you're looking for?</h2>)
   }
 
   def speakersTable = {
