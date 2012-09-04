@@ -1,8 +1,6 @@
 package javazone12
 import org.joda.time._
 
-case class VEvent(title:String, description:String, start:LocalDateTime, end:LocalDateTime, location:String);
-
 case class VCalendar(vevents: VEvent*) {
 
 
@@ -11,6 +9,8 @@ case class VCalendar(vevents: VEvent*) {
   def feed = {
     vevents.foldLeft(start)(_ + "\n" + vevent(_)) + "\n" + end
   }
+
+  def add(events: VEvent*) = VCalendar((vevents ++ events):_*)
 
   private def vevent(v: VEvent) = {
     """BEGIN:VEVENT
@@ -45,7 +45,7 @@ case class VCalendar(vevents: VEvent*) {
 
   val end = "END:VCALENDAR"
 
-
-
 }
+
+case class VEvent(title:String, description:String, start:LocalDateTime, end:LocalDateTime, location:String)
 

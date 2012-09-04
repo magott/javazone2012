@@ -10,7 +10,7 @@ class JavaZonePlan extends Plan {
     case GET(Path(Seg("javazone" :: "speakers" :: "arktekk" :: Nil))) => Ok ~> Html5(speakersTable)
     case GET(Path(Seg(Nil))) => Ok ~> Html5(Snippets.welcomePage)
 
-    case GET(Path(Seg("kaare" :: "reminder" :: Nil))) => CharContentType("text/calendar") ~> ResponseString(kaareCal)
+
   }
 
   def speakersTable = {
@@ -23,12 +23,4 @@ class JavaZonePlan extends Plan {
     </table>
   }
 
-  def kaareCal = {
-    val start = osloToUtc(new LocalDateTime(2012,9,12,15,40))
-    VCalendar(VEvent("True unfiltered love!","Kaare skravler og demonstrerer Unfiltered!",start,start.plusHours(1),"Sal 5")).feed
-  }
-
-  private def osloToUtc(dateTime: LocalDateTime) = {
-    dateTime.toDateTime(DateTimeZone.forID("Europe/Oslo")).withZone(DateTimeZone.UTC).toLocalDateTime
-  }
 }
