@@ -1,3 +1,4 @@
+package javazone12;
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.LocalDateTime
 import org.jsoup.Connection.Method
@@ -8,7 +9,7 @@ class MatchScraper {
 
   val dateTimeFormat = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm")
 
-  def scrapeAssignedMatches(loginToken: String) = {
+  def scrapeAssignedMatches(loginToken: String): List[AssignedMatch] = {
     val assignedMatchesResponse = Jsoup.connect("https://fiks.fotball.no/Fogisdomarklient/Uppdrag/UppdragUppdragLista.aspx")
       .cookie("ASP.NET_SessionId", loginToken).method(Method.GET).timeout(25000).followRedirects(false).execute()
 
@@ -28,8 +29,5 @@ class MatchScraper {
     }
     upcomingAssignedMatches.toList
   }
-
-  case class AssignedMatch(date:LocalDateTime, tournament: String, matchId:String,
-                           teams:String, venue:String, referees:String, fiksId:String)
 
 }

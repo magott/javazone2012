@@ -1,3 +1,4 @@
+package javazone12;
 import org.jsoup.Connection.Method
 import org.jsoup.Jsoup
 import scala.collection.JavaConverters._
