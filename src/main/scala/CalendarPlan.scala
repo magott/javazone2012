@@ -19,5 +19,4 @@ class CalendarPlan extends Plan{
     dateTime.toDateTime(DateTimeZone.forID("Europe/Oslo")).withZone(DateTimeZone.UTC).toLocalDateTime
   }
 
-
 }
