@@ -6,15 +6,13 @@ import org.joda.time.{DateTimeZone, LocalDateTime}
 
 class JavaZonePlan extends Plan {
   def intent = {
-    case GET(Path(Seg("javazone" :: Nil))) => Ok ~> Html5(<h1>Hei sveis</h1>)
-    case GET(Path(Seg("javazone" :: "speakers" :: "arktekk" :: Nil))) => Ok ~> Html5(speakersTable)
-    case GET(Path(Seg(Nil))) => Ok ~> Html5(Snippets.welcomePage)
-
+    case GET(Path(Seg(Nil))) => Ok ~> Html5(<h1>Hei sveis</h1>)
+    case GET(Path(Seg("speakers" :: "arktekk" :: Nil))) => Ok ~> Html5(speakersTable)
 
   }
 
   def speakersTable = {
-    val arktekkSpeakers = List("erlend","kaare","morten")
+    val arktekkSpeakers = List("bodil","thor åge","erlend","kaare","morten")
     <h1>Speakers</h1>
     <table>
       {

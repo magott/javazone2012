@@ -4,7 +4,9 @@ import xml.NodeSeq
 
 object Snippets {
 
-  def welcomePage = emptyPage(<h1>Hello</h1> <h2>Is it me you're looking for?</h2>)
+  def welcomePage = emptyPage(
+    <h1>Hello</h1> <h2>Is it me you're looking for?</h2>
+  )
 
   def emptyPage(body: NodeSeq) = {
     <html>
